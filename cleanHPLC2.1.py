@@ -36,8 +36,7 @@ for line in dirty:
 	first3 = line[0:3]
 	first11 = line[0:11]
 	if first11 == "Sample Name":
-		#out.write('\n' + str(line.split()[2]) + '\t') #Writes the name of the sample. ERROR: IF THE NAME CONTAINS A SPACE IT WILL ONLY GIVE THE FIRST CHARACTER. 
-		out.write('\n' + line[12:100] + '\t') #Writes the name of the sample. Problem with names containing spaces (present in the previous version) solved.
+		out.write('\n' + str(line.split('\t')[1]) + '\t')
 	elif first3 == "ID#":
 		start_reading = True 
 	elif len(line) == 0:
