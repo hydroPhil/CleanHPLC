@@ -2,12 +2,12 @@ import sys
 import os
 
 try:
-	inputfile = sys.argv[1]
+	inputpath = sys.argv[1]
 except:
 	print '\n' + 'REMEMBER TO CHOOSE THE FILE TO ANALYSE IN THE TERMINAL!!!' + '\n'
 
-dirty = open(inputfile, "r").readlines()
-directory = os.path.dirname(inputfile)
+dirty = open(inputpath, "r").readlines()
+directory = os.path.dirname(inputpath)
 outputpath = os.path.join(directory,"CleanHPLC.xls")
 out=open(outputpath, "w")
 samplenum=0
