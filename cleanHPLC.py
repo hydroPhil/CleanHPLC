@@ -1,12 +1,15 @@
 import sys
+import os
 
 try:
-	sys.argv[1]
+	inputpath = sys.argv[1]
 except:
 	print '\n' + 'REMEMBER TO CHOOSE THE FILE TO ANALYSE IN THE TERMINAL!!!' + '\n'
 
-dirty = open(sys.argv[1], "r").readlines()
-out=open("CleanHPLC.xls", "w")
+dirty = open(inputpath, "r").readlines()
+directory = os.path.dirname(inputpath)
+outputpath = os.path.join(directory,os.path.splitext(inputpath)[0] + '_clean.tsv')
+out=open(outputpath, "w")
 samplenum=0
 
 
@@ -33,16 +36,17 @@ for line in dirty:
 	first3 = line[0:3]
 	first11 = line[0:11]
 	if first11 == "Sample Name":
-		out.write('\n' + str(line.split()[2]) + '\t') #Writes the name of the sample
+		out.write('\n' + str(line.split('\t')[1]) + '\t')
 	elif first3 == "ID#":
 		start_reading = True 
 	elif len(line) == 0:
 		start_reading = False
 	elif (start_reading):
-		out.write(str(line.split()[5]) + '\t') #Writes the concentration of the metabolite
+		concentration = line.split()[5].replace(',','.') # replace commas
+		out.write(concentration + '\t') #Writes the concentration of the metabolite
 
 # Terminal congratulations
-print '\n' 'ANALYSIS COMPLETE! Check CleanHPLC.xls' + '\n'
+print '\n' 'ANALYSIS COMPLETE! Check ' + os.path.splitext(inputpath)[0] + '_clean.tsv' + '\n'
 
 # Quote submodule
 import random
