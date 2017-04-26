@@ -4,7 +4,7 @@ import os
 try:
 	inputpath = sys.argv[1]
 except:
-	print '\n' + 'REMEMBER TO CHOOSE THE FILE TO ANALYSE IN THE TERMINAL!!!' + '\n'
+	print ('\n' + 'REMEMBER TO CHOOSE THE FILE TO ANALYSE IN THE TERMINAL!!!' + '\n')
 
 dirty = open(inputpath, "r").readlines()
 directory = os.path.dirname(inputpath)
@@ -46,7 +46,7 @@ for line in dirty:
 		out.write(concentration + '\t') #Writes the concentration of the metabolite
 
 # Terminal congratulations
-print '\n' 'ANALYSIS COMPLETE! Check ' + os.path.splitext(inputpath)[0] + '_clean.tsv' + '\n'
+print ('\n' 'ANALYSIS COMPLETE! Check ' + os.path.splitext(inputpath)[0] + '_clean.tsv' + '\n')
 
 # Quote submodule
 import random
@@ -75,4 +75,4 @@ elif number == 11:
 	quote = 'It is a capital mistake to theorize before one has data. - Arthur Conan Doyle'
 elif number == 12:
 	quote = 'Amy Pond! Get your coat! - The Doctor'
-print quote
+print (quote)
